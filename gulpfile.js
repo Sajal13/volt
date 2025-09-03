@@ -71,6 +71,21 @@ const paths = {
     }
 };
 
+const vendorFiles = [
+  paths.base.node + '/@popperjs/core/dist/umd/**/*',
+  paths.base.node + '/bootstrap/dist/**/*',
+  paths.base.node + '/chartist/dist/**/*',
+  paths.base.node + '/chartist-plugin-tooltips/dist/**/*',
+  paths.base.node + '/notyf/notyf.min.js',
+  paths.base.node + '/nouislider/dist/**/*',
+  paths.base.node + '/onscreen/dist/**/*',
+  paths.base.node + '/simplebar/dist/**/*',
+  paths.base.node + '/smooth-scroll/dist/**/*',
+  paths.base.node + '/sweetalert2/dist/**/*',
+  paths.base.node + '/vanillajs-datepicker/dist/**/*',
+  paths.base.node + '/waypoints/lib/**/*'
+];
+
 // Compile SCSS
 gulp.task('scss', function () {
     return gulp.src([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/volt/**/*.scss', paths.src.scss + '/volt.scss'])
@@ -278,9 +293,9 @@ gulp.task('copy:dev:assets', function () {
 });
 
 // Copy node_modules to vendor
-gulp.task('copy:dist:vendor', function() {
-    return gulp.src(npmDist(), { base: paths.src.node_modules })
-      .pipe(gulp.dest(paths.dist.vendor));
+gulp.task('copy:dist:vendor', function () {
+  return gulp.src(vendorFiles, { base: paths.base.node })
+    .pipe(gulp.dest(paths.dist.vendor));
 });
 
 gulp.task('copy:dev:vendor', function() {
