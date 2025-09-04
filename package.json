@@ -30,7 +30,7 @@
         "start": "gulp",
         "build": "cross-env MODE=PROD gulp build:dist",
         "live": "cross-env MODE=PROD gulp build:dist && gulp live",
-        "publish": "gh-pages -d live"
+        "publish": "gh-pages -d dist"
     },
     "dependencies": {
         "@popperjs/core": "^2.9.2",
